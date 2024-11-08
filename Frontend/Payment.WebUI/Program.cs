@@ -52,24 +52,24 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.SlidingExpiration = true;
 });
 
-builder.Services.AddAuthentication()
-.AddGoogle(x =>
-{
-    x.ClientId = "268001054971-83d3k9qufn9f2gqle99s58e08op9h9nf.apps.googleusercontent.com";
-    x.ClientSecret = "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";
+//builder.Services.AddAuthentication()
+//.AddGoogle(x =>
+//{
+//    x.ClientId = "268001054971-83d3k9qufn9f2gqle99s58e08op9h9nf.apps.googleusercontent.com";
+//    x.ClientSecret = "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";
 
-    x.Events.OnRedirectToAuthorizationEndpoint = context =>
-    {
-        context.Response.Redirect(context.RedirectUri + "&prompt=select_account");
-        return Task.CompletedTask;
-    };
+//    x.Events.OnRedirectToAuthorizationEndpoint = context =>
+//    {
+//        context.Response.Redirect(context.RedirectUri + "&prompt=select_account");
+//        return Task.CompletedTask;
+//    };
 
-})
-.AddFacebook(x =>
-{
-    x.ClientId = "1504086693556868";
-    x.ClientSecret = "fa3e08f66e488f5426fd4af40aac5a7f";
-});
+//})
+//.AddFacebook(x =>
+//{
+//    x.ClientId = "1504086693556868";
+//    x.ClientSecret = "fa3e08f66e488f5426fd4af40aac5a7f";
+//});
 
 builder.Services.AddAuthorization(options =>
 {
