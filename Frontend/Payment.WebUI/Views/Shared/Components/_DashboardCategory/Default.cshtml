@@ -1,0 +1,36 @@
+﻿@model List<ResultCategoryDto>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="active-member">
+                    <div class="table-responsive">
+                        <table class="table table-xs mb-0">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Kategory Adı</th>
+                                    <th>Açıklama</th>
+                                    <th>Fotoğraf</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.Id</td>
+                                        <td>@item.Name</td>
+                                        <td>
+                                            <span>@item.Description</span>
+                                        </td>
+                                        <td><a href="@item.ImagePath"></a> @item.File</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

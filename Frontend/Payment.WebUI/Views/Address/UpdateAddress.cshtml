@@ -1,0 +1,113 @@
+﻿@model UpdateAddressDto
+@{
+    ViewData["Title"] = "UpdateAddress";
+    Layout = "~/Views/Layout/_Layout.cshtml";
+    var jsonData = ViewBag.JsonData;
+}
+
+<style>
+    .form-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    .form-box {
+        width: 50%;
+        max-width: 500px;
+        padding: 20px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Butonun ortalanması için */
+    .button-container {
+        text-align: center; /* Butonu ortalar */
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        color: white;
+        font-weight: bold;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+</style>
+
+<div class="form-container">
+    <div class="form-box">
+        <form method="post">
+            <input type="hidden" asp-for="AddressID" />
+            <label>Adres</label>
+            <input type="text" asp-for="AddressLine" class="form-control" />
+            <br />
+            <label>Şehir</label>
+            <select asp-for="City" id="city-select" class="form-control">
+                <option value="">Şehir Seçiniz</option>
+            </select>
+            <br />
+            <label>İlçe</label>
+            <select asp-for="District" id="district-select" class="form-control">
+                <option value="">İlçe Seçiniz</option>
+            </select>
+            <br />
+            <div class="button-container">
+                <button type="submit" class="btn btn-primary">Adresi Güncelle</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    const jsonData = @Html.Raw(@jsonData); // JSON verisini Razor'dan JavaScript'e aktarıyoruz
+    const currentCity = "@Model.City";    // Kullanıcının mevcut şehri
+    const currentDistrict = "@Model.District";  // Kullanıcının mevcut ilçesi
+
+    const citySelect = document.getElementById('city-select');
+    const districtSelect = document.getElementById('district-select');
+
+    // Şehirleri yükleme
+    const cities = [...new Set(jsonData.map(item => item.il))]; // Şehirleri unique hale getiriyoruz
+    cities.forEach(city => {
+        let option = document.createElement('option');
+        option.value = city;
+        option.textContent = city;
+        if (city === currentCity) { // Kullanıcının mevcut şehri seçili olacak
+            option.selected = true;
+        }
+        citySelect.appendChild(option);
+    });
+
+    // Şehir seçildiğinde ilgili ilçeleri yükleme
+    function loadDistricts(selectedCity) {
+        districtSelect.innerHTML = '<option value="">İlçe Seçiniz</option>'; // Önceki ilçeleri temizle
+        const districts = jsonData.filter(item => item.il === selectedCity).map(item => item.ilce);
+        districts.forEach(district => {
+            let option = document.createElement('option');
+            option.value = district;
+            option.textContent = district;
+            if (district === currentDistrict) { // Kullanıcının mevcut ilçesi seçili olacak
+                option.selected = true;
+            }
+            districtSelect.appendChild(option);
+        });
+    }
+
+    // Sayfa yüklendiğinde mevcut ilçeleri otomatik olarak yükle
+    loadDistricts(currentCity);
+
+    // Şehir değiştirildiğinde ilçeleri yeniden yükle
+    citySelect.addEventListener('change', function () {
+        const selectedCity = this.value;
+        loadDistricts(selectedCity);
+    });
+</script>

@@ -1,0 +1,166 @@
+﻿<ul class="menu-list d-flex align-items-center">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <!-- Hesap Menüsü -->
+        <li class="account-nav-item user-account-container">
+            <div class="link account-user">
+                <div class="icon-container">
+                    <i class="fa fa-user-circle"></i>
+                </div>
+                <p class="link-text">Hesabım</p>
+            </div>
+            <div class="new-account-dropdown">
+                <div class="user-loggedin-container container-padding">
+                    <a href="/Profile/Index" class="profile-button">Profilim</a>
+                    <a href="/Order/Index" class="orders-button">Siparişlerim</a>
+                    <form action="/Login/Logout" method="post">
+                        <button type="submit" class="logout-button">Çıkış Yap</button>
+                    </form>
+                </div>
+            </div>
+        </li>
+    }
+    else
+    {
+        <!-- Giriş Yap Menüsü -->
+        <li class="account-nav-item user-login-container">
+            <div class="link account-user">
+                <div class="icon-container">
+                    <i class="fa fa-user-circle initial-icon"></i>
+                </div>
+                <p class="link-text">Giriş Yap</p>
+            </div>
+            <div class="new-login-dropdown">
+                <div class="user-notloggedin-container container-padding">
+                    <a href="/Login/Index" class="login-button">Giriş Yap</a>
+                    <a href="/Register/Index" class="signup-button signup-button-container">Üye Ol</a>
+                </div>
+            </div>
+        </li>
+    }
+</ul>
+
+<style>
+    .account-nav-item.user-login-container,
+    .account-nav-item.user-account-container {
+        position: relative;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        font-size: 16px;
+        margin-right: 20px;
+        background-color: transparent;
+        padding: 10px 20px;
+        border-radius: 30px;
+        transition: background-color 0.3s ease;
+    }
+
+    .account-nav-item:hover .new-login-dropdown,
+    .account-nav-item:hover .new-account-dropdown {
+        display: block;
+    }
+
+    .account-nav-item .icon-container {
+        position: relative;
+        margin-right: 8px;
+        display: flex;
+        align-items: center;
+    }
+
+    .account-nav-item .fa-user-circle {
+        font-size: 24px;
+        color: #f27a1a;
+        vertical-align: middle;
+    }
+
+    .account-nav-item .link-text {
+        font-family: 'Segoe UI', sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        color: #333;
+        line-height: 1;
+    }
+
+    .new-login-dropdown,
+    .new-account-dropdown {
+        display: none;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 45px;
+        width: 200px;
+        background-color: #fff;
+        border: 1px solid #d9d9d9;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+        padding: 10px 0;
+    }
+
+    /* Profil, Siparişlerim ve Çıkış Yap butonları */
+    .user-loggedin-container .profile-button,
+    .user-loggedin-container .orders-button,
+    .user-loggedin-container .logout-button {
+        display: block;
+        width: 90%;
+        text-align: center;
+        font-size: 14px;
+        font-weight: 600;
+        margin: 10px auto;
+        border-radius: 8px;
+        padding: 10px 0;
+        text-decoration: none;
+    }
+
+    .user-loggedin-container .profile-button,
+    .user-loggedin-container .orders-button {
+        background-color: #f27a1a;
+        color: #fff;
+        margin-bottom: 8px;
+        border: none;
+    }
+
+    .user-loggedin-container .logout-button {
+        background-color: #333;
+        color: #fff;
+        border: none;
+        margin-bottom: 8px;
+    }
+
+        .user-loggedin-container .logout-button:hover {
+            background-color: #555;
+        }
+
+    /* Giriş Yap ve Üye Ol butonları */
+    .user-notloggedin-container .login-button,
+    .user-notloggedin-container .signup-button {
+        display: block;
+        width: 90%;
+        text-align: center;
+        font-size: 14px;
+        font-weight: 600;
+        margin: 10px auto;
+        border-radius: 8px;
+        padding: 10px 0;
+        text-decoration: none;
+    }
+
+    .user-notloggedin-container .login-button {
+        background-color: #f27a1a;
+        color: #fff;
+    }
+
+    .user-notloggedin-container .signup-button {
+        background-color: #f5f5f5;
+        color: #333;
+        border: 1px solid #d9d9d9;
+    }
+
+    .user-notloggedin-container .login-button:hover {
+        background-color: #e06b12;
+    }
+
+    .user-notloggedin-container .signup-button:hover {
+        background-color: #e6e6e6;
+    }
+</style>

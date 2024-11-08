@@ -1,0 +1,51 @@
+﻿@model ResultAppUserDto
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Layout/_Layout.cshtml";
+    int id = ViewBag.UserID;
+}
+
+<style>
+    .form-container {
+        display: flex;
+        justify-content: center; /* Yatay ortalama */
+        align-items: center; /* Dikey ortalama */
+        min-height: 100vh; /* Ekranın tamamını kaplamak için */
+    }
+
+    .form-box {
+        width: 50%; /* Formun genişliği */
+        max-width: 500px; /* Maksimum genişlik */
+        padding: 20px; /* İç boşluk */
+        background-color: #f8f9fa; /* Arka plan rengi */
+        border-radius: 8px; /* Kenar yuvarlama */
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); /* Gölgelendirme */
+    }
+</style>
+
+
+<div class="form-container">
+    <div class="form-box">
+        <form method="post">
+            <input type="hidden" asp-for="@id" />
+            <label>Kullanıcı Adı</label>
+            <input type="text" asp-for="UserName" class="form-control" readonly/>
+            <br />
+            <label>Email</label>
+            <input type="text" asp-for="Email" class="form-control" readonly />
+            <br />
+            <label>Ad</label>
+            <input type="text" asp-for="Name" class="form-control" readonly />
+            <br />
+            <label>Soyad</label>
+            <input type="text" asp-for="Surname" class="form-control" readonly />
+            <br />
+            <label>Telefon Numarası</label>
+            <input type="number" asp-for="Phone" class="form-control" readonly />
+            <br />
+            <a href="/Profile/UpdateProfile/@id" class="btn btn-primary btn-block">Profili Güncelle</a>
+            <a href="/Address/UserAddresses/@id" class="btn btn-primary btn-block">Adres Bilgieri</a>
+        </form>
+    </div>
+</div>
+

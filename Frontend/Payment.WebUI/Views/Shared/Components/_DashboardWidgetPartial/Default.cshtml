@@ -1,0 +1,92 @@
+﻿@{
+    var userCount = ViewBag.UserCount;
+    var errorMessage = ViewBag.ErrorMessage;
+    var productCount = ViewBag.ProductCount;
+    var totalProductValue= ViewBag.TotalProductValue;
+}
+<div class="row">
+    <div class="col-lg-3 col-sm-6">
+        <div class="card gradient-1">
+            <div class="card-body">
+                <h3 class="card-title text-white">Toplam Ürün Sayısı</h3>
+                <div class="d-inline-block">
+                    <h2 class="text-white">
+                        @if (productCount != null && productCount > 0)
+                        {
+                            @productCount
+                            
+                        }
+                        else
+                        {
+                            <span class="text-danger">Ürün sayısı alınamdı.</span>
+                        }
+                    </h2>
+                    <p class="text-white mb-0">@DateTime.UtcNow.ToString("dd.MM.yyyy")</p>
+                </div>
+                <span class="float-right display-5 opacity-5"><i class="fa fa-shopping-cart"></i></span>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+        <div class="card gradient-2">
+            <div class="card-body">
+                <h3 class="card-title text-white">Toplam Satış Değeri</h3>
+                <div class="d-inline-block">
+                    <h2 class="text-white">
+                        @if (totalProductValue != null && totalProductValue > 0)
+                        {
+                            @totalProductValue.ToString("C")
+                            
+                        }
+                        else
+                        {
+                            <span class="text-danger">Taplam satış miktarı alınamdı.</span>
+                        }
+                    </h2>
+                    <p class="text-white mb-0">Jan - March 2019</p>
+                </div>
+                <span class="float-right display-5 opacity-5"><i class="fa fa-money"></i></span>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+        <div class="card gradient-3">
+            <div class="card-body">
+                <h3 class="card-title text-white">Toplam Kullanıcı Sayısı</h3>
+                <div class="d-inline-block">
+                    <h2 class="text-white">
+                        @if (userCount != null && userCount > 0)
+                        {
+                            @userCount
+                        }
+                        else
+                        {
+                            <span class="text-danger">Kullanıcı bilgisi alınamadı</span>
+                        }
+
+                    </h2>
+                    <p class="text-white mb-0">@DateTime.UtcNow.ToString("dd.MM.yyyy")</p>
+                    @if (errorMessage != null)
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            @errorMessage
+                        </div>
+                    }
+                </div>
+                <span class="float-right display-5 opacity-5"><i class="fa fa-users"></i></span>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+        <div class="card gradient-4">
+            <div class="card-body">
+                <h3 class="card-title text-white">Customer Satisfaction</h3>
+                <div class="d-inline-block">
+                    <h2 class="text-white">99%</h2>
+                    <p class="text-white mb-0">Jan - March 2019</p>
+                </div>
+                <span class="float-right display-5 opacity-5"><i class="fa fa-heart"></i></span>
+            </div>
+        </div>
+    </div>
+</div>

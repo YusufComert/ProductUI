@@ -1,0 +1,149 @@
+﻿<!-- Begin Header Bottom Area -->
+<div class="header-bottom header-sticky d-none d-lg-block">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 d-flex justify-content-between align-items-center">
+                <!-- Begin Header Bottom Menu Area -->
+                <div class="hb-menu hb-menu-2 d-xl-block">
+                    <nav>
+                        <ul class="menu-list d-flex align-items-center">
+                            <li>
+                                <a asp-controller="Home" asp-action="Index">Anasayfa</a>
+                            </li>
+                            <li>
+                                <a asp-controller="Shop" asp-action="Index">Mağaza</a>
+                            </li>
+                            <li>
+                                <a asp-controller="About" asp-action="Index">Hakkımızda</a>
+                            </li>
+                            <li>
+                                <a asp-controller="Contact" asp-action="Index">İletişim</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- Header Bottom Menu Area End Here -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Header Bottom Area End Here -->
+<!-- CSS -->
+<style>
+    .header-bottom {
+        background-color: #b2d8e9; /* Menünün arkaplan rengini güncelledim, isteğinize göre değiştirebilirsiniz */
+        padding: 15px 0;
+    }
+
+    .menu-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+        .menu-list li {
+            margin-right: 20px;
+            font-size: 16px;
+        }
+
+            .menu-list li a {
+                text-decoration: none;
+                color: #333;
+                font-weight: bold;
+                padding: 5px 10px;
+            }
+
+    .account-nav-item.user-login-container {
+        position: relative;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        font-size: 16px;
+        margin-right: 20px; /* Menüdeki diğer elemanlarla uyum için margin ekledik */
+    }
+
+        .account-nav-item.user-login-container .link {
+            display: flex;
+            align-items: center;
+        }
+
+        .account-nav-item.user-login-container .icon-container {
+            position: relative;
+            margin-right: 8px;
+        }
+
+        .account-nav-item.user-login-container .initial-icon,
+        .account-nav-item.user-login-container .hover-icon {
+            font-size: 16px;
+            transition: opacity 0.4s ease;
+        }
+
+        .account-nav-item.user-login-container .hover-icon {
+            opacity: 0;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .account-nav-item.user-login-container:hover .hover-icon {
+            opacity: 1;
+        }
+
+        .account-nav-item.user-login-container:hover .initial-icon {
+            opacity: 0;
+        }
+
+        .account-nav-item.user-login-container .link-text {
+            font-family: source_sans_prosemibold, sans-serif;
+            font-size: 13px;
+            color: #333333;
+        }
+
+        .account-nav-item.user-login-container .new-login-dropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 40px;
+            width: 177px;
+            background-color: #fff;
+            border: 1px solid #d9d9d9;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
+            z-index: 999;
+        }
+
+        .account-nav-item.user-login-container:hover .new-login-dropdown {
+            display: block;
+        }
+
+    .user-notloggedin-container {
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+        .user-notloggedin-container .login-button,
+        .user-notloggedin-container .signup-button {
+            display: block;
+            width: 100%;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 6px;
+            line-height: 34px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .user-notloggedin-container .login-button {
+            background-color: #f27a1a;
+            color: #fff;
+        }
+
+        .user-notloggedin-container .signup-button {
+            margin-top: 8px;
+            color: #666;
+            border: 1px solid #dedede;
+        }
+</style>

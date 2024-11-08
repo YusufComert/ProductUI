@@ -1,0 +1,38 @@
+﻿@model List<ResultContactDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<div class="container my-5">
+    <h2 class="text-center mb-4">Gelen Mailler</h2>
+
+    <div class="row">
+        @if (Model.Any())
+        {
+            foreach (var contact in Model)
+            {
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary">@contact.Name</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Gönderen Mail:@contact.Mail</h6>
+                            <p class="card-text"><strong>Konu:</strong> Toplantı</p>
+                            <p class="card-text">@contact.Message</p>
+                        </div>
+
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="col-12">
+                <div class="alert alert-warning" role="alert">
+                    Hiç mesaj bulunmamaktadır.
+                </div>
+            </div>
+        }
+    </div>
+</div>

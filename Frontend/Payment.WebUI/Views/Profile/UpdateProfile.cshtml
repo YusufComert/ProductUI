@@ -1,0 +1,58 @@
+﻿@model ResultAppUserDto
+
+@{
+    ViewData["Title"] = "UpdateProfile";
+    Layout = "~/Views/Layout/_Layout.cshtml";
+    int id = ViewBag.UserID;
+}
+
+
+<style>
+    .form-container {
+        display: flex;
+        justify-content: center; /* Yatay ortalama */
+        align-items: center; /* Dikey ortalama */
+        min-height: 100vh; /* Ekranın tamamını kaplamak için */
+    }
+
+    .form-box {
+        width: 50%; /* Formun genişliği */
+        max-width: 500px; /* Maksimum genişlik */
+        padding: 20px; /* İç boşluk */
+        background-color: #f8f9fa; /* Arka plan rengi */
+        border-radius: 8px; /* Kenar yuvarlama */
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); /* Gölgelendirme */
+    }
+</style>
+
+
+<div class="form-container">
+    <div class="form-box">
+        <form method="post">
+            <input type="hidden" asp-for="@id" />
+            <label>Kullanıcı Adı</label>
+            <input type="text" asp-for="UserName" class="form-control" />
+            <br />
+            <label>Email</label>
+            <input type="text" asp-for="Email" class="form-control" />
+            <br />
+            <label>Ad</label>
+            <input type="text" asp-for="Name" class="form-control" />
+            <br />
+            <label>Soyad</label>
+            <input type="text" asp-for="Surname" class="form-control" />
+            <br />
+            <label>Telefon Numarası</label>
+            <input type="number" asp-for="Phone" class="form-control" />
+            <br />
+            <button class="btn btn-primary">Profili Güncelle</button>
+            @if (ViewBag.ErrorMessage != null)
+            {
+                <div class="alert alert-danger" role="alert">
+                    ViewBag.ErrorMessage
+                </div>
+            }
+        </form>
+    </div>
+</div>
+

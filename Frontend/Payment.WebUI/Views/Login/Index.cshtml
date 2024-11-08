@@ -1,0 +1,156 @@
+﻿@model LoginDto
+
+@{
+    // Layout = null;
+    Layout = "~/Views/Layout/_Layout.cshtml";
+    var errorMessage = ViewBag.ErrorMessage;
+}
+
+<!DOCTYPE html>
+<html class="h-100" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Login Paneli</title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="~/adminweb/assets/images/favicon.png">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="~/adminweb/css/style.css" rel="stylesheet">
+    <style>
+        .social-account-login-buttons {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+            .social-account-login-buttons .social-login-button {
+                background-color: #fff;
+                font-size: 16px;
+                border-radius: 6px;
+                border: solid 1px #e6e6e6;
+                padding: 10px 15px;
+                align-items: center;
+                display: flex;
+                width: 48%;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
+                cursor: pointer;
+            }
+
+                .social-account-login-buttons .social-login-button:hover {
+                    transform: scale(1.05);
+                }
+
+            .social-account-login-buttons .social-login-icon {
+                margin-right: 10px;
+                width: 35px;
+                height: 35px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #fff;
+                border-radius: 4px;
+            }
+
+                .social-account-login-buttons .social-login-icon.google {
+                    background-color: #f14236;
+                }
+
+                .social-account-login-buttons .social-login-icon.facebook {
+                    background-color: #4c6ea8;
+                }
+
+            .social-account-login-buttons .social-login-button small {
+                font-size: 14px;
+                color: #666666;
+            }
+
+        media (max-width: 768px) {
+            .social-account-login-buttons
+
+        {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .social-account-login-buttons .social-login-button {
+            width: 80%;
+            margin-bottom: 15px;
+        }
+
+        }
+    </style>
+</head>
+
+<body class="h-100">
+    <div class="login-form-bg h-100">
+        <div class="container h-100">
+            <div class="row justify-content-center h-100">
+                <div class="col-xl-6">
+                    <div class="form-input-content">
+                        <div class="card login-form mb-0">
+                            <div class="card-body pt-5">
+                                <a class="text-center" href="index.html">
+                                    <h4>Login Paneli</h4>
+                                </a>
+
+                                <form class="mt-5 mb-5 login-input" method="post">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Email adresiniz" asp-for="Email">
+                                        <span asp-validation-for="Email" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" placeholder="Şifreniz" asp-for="Password">
+                                        <span asp-validation-for="Password" class="text-danger"></span>
+                                    </div>
+                                    @if (errorMessage != null)
+                                    {
+                                        <div class="alert alert-danger" role="alert">
+                                            @errorMessage
+                                        </div>
+                                    }
+                                    <div asp-validation-summary="ModelOnly" class="text-warning"></div>
+                                    <button class="btn login-form__btn submit w-100">Giriş Yap</button>
+                                </form>
+
+                                <!-- Sosyal medya giriş butonları -->
+                                <div class="social-account-login-buttons">
+                                    <a href="@Url.Action("FacebookLogin", "Login")" class="social-login-button">
+                                        <div class="social-login-icon facebook">
+                                            <i class="fab fa-facebook-f"></i> <!-- Font Awesome Facebook Icon -->
+                                        </div>
+                                        <div class="flex flex-column">
+                                            <div>facebook</div>
+                                            <small>ile giriş yap</small>
+                                        </div>
+                                    </a>
+
+                                    <a href="@Url.Action("GoogleLogin", "Login")" class="social-login-button">
+                                        <div class="social-login-icon google">
+                                            <i class="fab fa-google"></i> <!-- Font Awesome Google Icon -->
+                                        </div>
+                                        <div class="flex flex-column">
+                                            <div>google</div>
+                                            <small>ile giriş yap</small>
+                                        </div>
+                                    </a>
+                                </div>
+                                <p class="mt-5 login-form__footer">Bir Hesabın Yok mu? <a href="/Register/Index/" class="text-primary">Kayıt Ol</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/adminweb/plugins/common/common.min.js"></script>
+    <script src="~/adminweb/js/custom.min.js"></script>
+    <script src="~/adminweb/js/settings.js"></script>
+    <script src="~/adminweb/js/gleek.js"></script>
+    <script src="~/adminweb/js/styleSwitcher.js"></script>
+</body>
+</html>

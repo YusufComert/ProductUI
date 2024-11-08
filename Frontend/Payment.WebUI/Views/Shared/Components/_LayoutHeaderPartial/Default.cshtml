@@ -1,0 +1,60 @@
+﻿   @model List<Payment.WebUI.DTOs.CategoryDtos.ResultCategoryDto>
+
+<header>
+    <!-- Begin Header Middle Area -->
+    <div class="header-middle pl-sm-0 pr-sm-0 pl-xs-0 pr-xs-0">
+        <div class="container">
+            <div class="row">
+                <!-- Begin Header Logo Area -->
+                <div class="col-lg-3">
+                    <div class="logo pb-sm-30 pb-xs-30">
+                        <a href="/Home/Index">
+                            <h4>.NET CORE MANAGEMENT</h4>
+                        </a>
+                    </div>
+                </div>
+                <!-- Header Logo Area End Here -->
+                <!-- Begin Header Middle Right Area -->
+                <div class="col-lg-9 pl-0 ml-sm-15 ml-xs-15">
+                    <!-- Begin Header Middle Searchbox Area -->
+                    <form action="#" class="hm-searchbox">
+
+
+                        <select class="nice-select select-search-category">
+                            @foreach (var item in Model)
+                            {
+                                <option value="@item.Id">@item.Name</option>
+                            }
+
+
+                        </select>
+
+                        <input type="text" placeholder="Aranack kelimeyi  girin ...">
+                        <button class="li-btn" type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                    <!-- Header Middle Searchbox Area End Here -->
+                    <!-- Begin Header Middle Right Area -->
+                    <div class="header-middle-top">
+                        @await Component.InvokeAsync("_LayoutMiniCartPartial")
+                            <!-- Header Mini Cart Area End Here -->
+                       
+                    </div>
+                    <!-- Header Middle Right Area End Here -->
+                </div>
+                <!-- Header Middle Right Area End Here -->
+            </div>
+        </div>
+    </div>
+    <!-- Header Middle Area End Here -->
+    <!-- Begin Mobile Menu Area -->
+    <div class="mobile-menu-area d-lg-none d-xl-none col-12">
+        <div class="container">
+            <div class="row">
+                <div class="mobile-menu">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Mobile Menu Area End Here -->
+</header>
+<!-- Header Area End Here -->

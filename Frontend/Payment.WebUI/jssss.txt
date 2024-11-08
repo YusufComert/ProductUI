@@ -1,0 +1,10 @@
+﻿    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    font: 100% SourceSansPro;
+    font-family: source_sans_proregular, sans-serif !important;
+    box-sizing: content-box;
+    margin: 0;
+    padding: 0;
+    display: block;
+    padding-bottom: 0!important;
+    background: #fefefe;
+    background-color: #fafafa !important;

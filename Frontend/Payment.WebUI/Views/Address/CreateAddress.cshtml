@@ -1,0 +1,107 @@
+﻿@model CreateAddressDto
+@{
+    ViewData["Title"] = "CreateAddress";
+    Layout = "~/Views/Layout/_Layout.cshtml";
+    int id = ViewBag.UserID;
+
+    // JSON verisini Razor'da kullanmak için ViewBag'den alıyoruz
+    var jsonData = ViewBag.JsonData;
+}
+
+<style>
+    .form-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 80vh; /* Formu sayfa ortasında tutmak için */
+    }
+
+    .form-box {
+        width: 100%;
+        max-width: 600px; /* Formun genişliği */
+        background-color: #fff; /* Arka plan rengi */
+        border-radius: 10px; /* Kenarları yuvarlama */
+        padding: 20px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); /* Hafif gölge */
+    }
+
+    label {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc; /* Hafif kenarlık */
+        border-radius: 5px;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        color: #fff;
+        font-weight: bold;
+        width: 100%; /* Butonun form genişliğinde olması */
+        cursor: pointer;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3; /* Hover efekti */
+        }
+</style>
+
+<div class="form-container">
+    <div class="form-box">
+        <form method="post">
+            <label for="AddressLine">Adres</label>
+            <input type="text" asp-for="AddressLine" class="form-control" placeholder="Adresinizi girin..." />
+
+            <label for="city-select">Şehir</label>
+            <select asp-for="City" id="city-select" class="form-control">
+                <option value="">Şehir Seçiniz</option>
+            </select>
+
+            <label for="district-select">İlçe</label>
+            <select asp-for="District" id="district-select" class="form-control">
+                <option value="">İlçe Seçiniz</option>
+            </select>
+
+            <input type="hidden" asp-for="@id" />
+
+            <button type="submit" class="btn btn-primary">Adresi Ekle</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    const jsonData = @Html.Raw(@jsonData); // Controller'dan gelen JSON verisi
+
+    const citySelect = document.getElementById('city-select');
+    const districtSelect = document.getElementById('district-select');
+
+    // Şehirleri yükleme
+    const cities = [...new Set(jsonData.map(item => item.il))]; // Şehirleri unique hale getiriyoruz
+    cities.forEach(city => {
+        let option = document.createElement('option');
+        option.value = city;
+        option.textContent = city;
+        citySelect.appendChild(option);
+    });
+
+    // Şehir seçildiğinde ilgili ilçeleri yükleme
+    citySelect.addEventListener('change', function () {
+        const selectedCity = this.value;
+        districtSelect.innerHTML = '<option value="">İlçe Seçiniz</option>'; // Önceki ilçeleri temizle
+        const districts = jsonData.filter(item => item.il === selectedCity).map(item => item.ilce);
+        districts.forEach(district => {
+            let option = document.createElement('option');
+            option.value = district;
+            option.textContent = district;
+            districtSelect.appendChild(option);
+        });
+    });
+</script>

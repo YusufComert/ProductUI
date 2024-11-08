@@ -1,0 +1,56 @@
+﻿@model List<ResultProductDto>  
+ 
+<!-- Begin Featured Product Area -->
+<div class="col-lg-12">
+    <div class="featured-product pt-sm-10 pt-xs-25">
+        <div class="li-section-title">
+            <h2>
+                <span>Ürünler</span>
+            </h2>
+        </div>
+        <div class="featured-product-active-2 owl-carousel">
+            <div class="featured-product-bundle">
+                <div class="row">
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        var item = Model[i];
+                        if (i > 0 && i % 4 == 0)
+                        {
+                            <div class="row"> <!-- Yeni satır başlat --></div>
+                        }
+
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="group-featured-pro-wrapper">
+                                <div class="product-img">
+                                    <a href="/Shop/DetailSingleProduct/@item.ProductID">
+                                        <img alt="" src="@item.CoverImage">
+                                    </a>
+                                </div>
+                                <div class="featured-pro-content">
+                                    <div class="product-review">
+                                        <h5 class="manufacturer">
+                                            <a href="/Shop/DetailSingleProduct/@item.ProductID">@item.Title</a>
+                                        </h5>
+                                    </div>
+                                    <div class="rating-box">
+                                        <ul class="rating">
+                                            <li><i class="fa fa-star-o"></i></li>
+                                            <li><i class="fa fa-star-o"></i></li>
+                                            <li><i class="fa fa-star-o"></i></li>
+                                            <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                            <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                        </ul>
+                                    </div>
+                                    <div class="featured-price-box">
+                                        <span class="new-price">@item.Price ₺</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div> <!-- Son satırı kapat -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Featured Product Area End Here -->

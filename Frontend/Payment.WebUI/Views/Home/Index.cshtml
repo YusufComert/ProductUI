@@ -1,0 +1,17 @@
+﻿ @{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Layout/_Layout.cshtml";
+}
+
+
+@await Component.InvokeAsync("_HomeSliderWithCategoryPartial")
+    <section class="product-area li-trending-product li-trending-product-2 pt-60 pb-45">
+        <div class="container">
+            <div class="row">
+            @await Component.InvokeAsync("_HomeBeginTabMenuPartial")
+
+            @await Component.InvokeAsync("_HomeBeginFeaturedProductPartial")
+         
+            </div>
+        </div>
+    </section>

@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Layout/_Layout.cshtml";
+}
+<body>
+
+    <div class="body-wrapper">
+        <!-- Begin Contact Main Page Area -->
+        <div class="contact-main-page mt-60 mb-40 mb-md-40 mb-sm-40 mb-xs-40">
+            <div class="container mb-60">
+                <div id="google-map"></div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 offset-lg-1 col-md-12 order-1 order-lg-2">
+                        <div class="contact-page-side-content">
+                            <h3 class="contact-page-title">Bize Ulaşın</h3>
+                            <p class="contact-page-message mb-25">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                            <div class="single-contact-block">
+                                <h4><i class="fa fa-fax"></i> Adres</h4>
+                                <p>123 Ana Cadde, İstanbul, Türkiye</p>
+                            </div>
+                            <div class="single-contact-block">
+                                <h4><i class="fa fa-phone"></i> Telefon</h4>
+                                <p>Mobil: (+90) 123 456 789</p>
+                                <p>Acil Çağrı: 1009 678 456</p>
+                            </div>
+                            <div class="single-contact-block last-child">
+                                <h4><i class="fa fa-envelope-o"></i> E-posta</h4>
+                                <p>yourmail@domain.com</p>
+                                <p>support@hastech.company</p>
+                            </div>
+                        </div>
+                    </div>
+                    @await Html.PartialAsync("/Views/Contact/SendMessage.cshtml")
+                </div>
+            </div>
+        </div>
+        <!-- Contact Main Page Area End Here -->
+    </div>
+</body>
+
